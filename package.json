@@ -7,7 +7,7 @@
     "suppress-ts-errors": "dist/cli.js"
   },
   "scripts": {
-    "build": "ts-node --files src/index.ts",
+    "build": "tsc",
     "lint": "eslint --fix '{src,tests}/**/*.{ts,js}'",
     "format": "prettier --write '{src,tests}/**/*.{ts,js}'",
     "test": "vitest",
