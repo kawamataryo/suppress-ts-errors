@@ -22,7 +22,7 @@ export const getArgs = () =>
       },
       "with-error-code": {
         type: "boolean",
-        default: false,
+        default: true,
         alias: "c",
         demandOption: true,
         describe: "Add error code to comment. e.g. TS2345.",
