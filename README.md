@@ -4,12 +4,14 @@
 
 Cli tool to add comments to suppress typescript type errors.
 
+https://user-images.githubusercontent.com/11070996/166123378-971a7de8-b3c3-4b0a-9057-f21a6d28de06.mp4
+
 ## 🛠 Usage
 
 **Run**
 
 ```bash
-npx suppress-ts-errors
+$ npx suppress-ts-errors
 ```
 
 **options**
@@ -27,6 +29,6 @@ vue-word-highlighter is available under the MIT License.
 ## 🛣️ Road map
 
 - [x] Extract main logic from clit.ts and add unit test.
-- [ ] Arrange README. Add Options and Usage.
+- [x] Arrange README. Add Options and Usage.
 - [ ] Support for `.tsx`.
 - [ ] Support for `.vue`.
