@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "cli tool to add comments to suppress typescript type errors",
   "main": "index.js",
+  "packageManager": "pnpm@6.32.2",
   "bin": {
     "suppress-ts-errors": "dist/cli.js"
   },
@@ -11,6 +12,7 @@
     "lint": "eslint --fix '{src,tests}/**/*.{ts,js}'",
     "format": "prettier --write '{src,tests}/**/*.{ts,js}'",
     "test": "vitest",
+    "test:ci": "vitest run",
     "prepare": "husky install"
   },
   "repository": {
