@@ -12,6 +12,14 @@ Cli tool to add comments to suppress typescript type errors.
 npx suppress-ts-errors
 ```
 
+**options**
+
+| option                | default           | description                                                                                                                                                                                                                                                                                                                        |
+| --------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| -p, --tsconfig-path   | `./tsconfig.json` | Path to tsconfig.json.                                                                                                                                                                                                                                                                                                             |
+| -t, --comment-type    | `1`               | Choice of inserted comment type. `1` is [@ts-expected-error](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-9.html#-ts-expect-error-comments), `2` is [@ts-ignore](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-6.html#suppress-errors-in-ts-files-using--ts-ignore-comments). |
+| -c, --with-error-code | `true`            | Add error code to comment. e.g. TS2345.                                                                                                                                                                                                                                                                                            |
+
 ## 📄 License
 
 vue-word-highlighter is available under the MIT License.
