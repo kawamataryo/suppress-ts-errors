@@ -1,10 +1,13 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@types/cli-progress': ^3.9.2
   '@types/node': ^16.10.2
   '@types/yargs': ^17.0.10
   '@typescript-eslint/eslint-plugin': ^4.32.0
   '@typescript-eslint/parser': ^4.32.0
+  ansi-colors: ^4.1.1
+  cli-progress: ^3.10.0
   eslint: ^7.32.0
   eslint-config-prettier: ^8.3.0
   husky: ^7.0.4
@@ -17,10 +20,13 @@ specifiers:
   yargs: ^17.4.1
 
 devDependencies:
+  '@types/cli-progress': 3.9.2
   '@types/node': 16.10.2
   '@types/yargs': 17.0.10
   '@typescript-eslint/eslint-plugin': 4.32.0_1eacf2495a01e8a68ffa99482308e8ec
   '@typescript-eslint/parser': 4.32.0_eslint@7.32.0+typescript@4.4.3
+  ansi-colors: 4.1.1
+  cli-progress: 3.10.0
   eslint: 7.32.0
   eslint-config-prettier: 8.3.0_eslint@7.32.0
   husky: 7.0.4
@@ -152,6 +158,12 @@ packages:
 
   /@types/chai/4.3.1:
     resolution: {integrity: sha512-/zPMqDkzSZ8t3VtxOa4KPq7uzzW978M9Tvh+j7GHKuo6k6GTLxPJ4J5gE5cjfJ26pnXst0N5Hax8Sr0T2Mi9zQ==}
+    dev: true
+
+  /@types/cli-progress/3.9.2:
+    resolution: {integrity: sha512-VO5/X5Ij+oVgEVjg5u0IXVe3JQSKJX+Ev8C5x+0hPy0AuWyW+bF8tbajR7cPFnDGhs7pidztcac+ccrDtk5teA==}
+    dependencies:
+      '@types/node': 16.10.2
     dev: true
 
   /@types/json-schema/7.0.9:
@@ -467,6 +479,13 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       restore-cursor: 3.1.0
+    dev: true
+
+  /cli-progress/3.10.0:
+    resolution: {integrity: sha512-kLORQrhYCAtUPLZxqsAt2YJGOvRdt34+O6jl5cQGb7iF3dM55FQZlTR+rQyIK9JUcO9bBMwZsTlND+3dmFU2Cw==}
+    engines: {node: '>=4'}
+    dependencies:
+      string-width: 4.2.3
     dev: true
 
   /cli-truncate/2.1.0:

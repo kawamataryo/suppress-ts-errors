@@ -24,10 +24,13 @@
   },
   "homepage": "https://github.com/kawamataryo/ts-node-starter#readme",
   "devDependencies": {
+    "@types/cli-progress": "^3.9.2",
     "@types/node": "^16.10.2",
     "@types/yargs": "^17.0.10",
     "@typescript-eslint/eslint-plugin": "^4.32.0",
     "@typescript-eslint/parser": "^4.32.0",
+    "ansi-colors": "^4.1.1",
+    "cli-progress": "^3.10.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^7.0.4",

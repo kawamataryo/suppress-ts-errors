@@ -4,9 +4,11 @@ import { Project } from "ts-morph";
 import { getArgs } from "./lib/args";
 import { existsSync } from "fs";
 import { getWhiteSpaceCountFromLineNumber } from "./lib/getWhiteSpaceCountFromLineNumber";
+import { generateProgressBar } from "./lib/progressbar";
 
 const main = () => {
   const args = getArgs();
+  const progressBar = generateProgressBar();
 
   // Check if tsconfig.json exists
   if (!existsSync(args.tsconfigPath)) {
@@ -16,7 +18,10 @@ const main = () => {
 
   const project = new Project({ tsConfigFilePath: args.tsconfigPath });
   const sourceFiles = project.getSourceFiles();
+
   let insertedCommentCount = 0;
+
+  progressBar.start(sourceFiles.length, 0);
 
   sourceFiles.forEach((sourceFile) => {
     const sourceTextArray = sourceFile.getFullText().split("\n");
@@ -60,8 +65,10 @@ const main = () => {
       sourceFile.replaceWithText(sourceTextArray.join("\n"));
       sourceFile.saveSync();
     }
+    progressBar.increment();
   });
 
+  progressBar.stop();
   console.log("Done 🎉");
   console.log("suppress errors:", insertedCommentCount);
 };
