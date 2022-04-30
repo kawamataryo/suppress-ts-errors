@@ -1,0 +1,43 @@
+{
+  "name": "suppress-ts-errors",
+  "version": "0.1.0",
+  "description": "cli tool to add comments to suppress typescript type errors",
+  "main": "index.js",
+  "scripts": {
+    "build": "ts-node --files src/index.ts",
+    "lint": "eslint --fix '{src,tests}/**/*.{ts,js}'",
+    "format": "prettier --write '{src,tests}/**/*.{ts,js}'",
+    "test": "vitest",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kawamataryo/ts-node-starter.git"
+  },
+  "author": "Ryo Kawamata <ba068082@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kawamataryo/ts-node-starter/issues"
+  },
+  "homepage": "https://github.com/kawamataryo/ts-node-starter#readme",
+  "devDependencies": {
+    "@types/node": "^16.10.2",
+    "@types/yargs": "^17.0.10",
+    "@typescript-eslint/eslint-plugin": "^4.32.0",
+    "@typescript-eslint/parser": "^4.32.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.4.1",
+    "ts-morph": "^14.0.0",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.3",
+    "vitest": "^0.10.0",
+    "yargs": "^17.4.1"
+  },
+  "lint-staged": {
+    "*.{ts,js}": [
+      "eslint --cache --fix",
+      "prettier --write"
+    ]
+  }
+}
