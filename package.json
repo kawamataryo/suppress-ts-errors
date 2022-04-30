@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "cli tool to add comments to suppress typescript type errors",
   "main": "index.js",
+  "bin": {
+    "suppress-ts-errors": "dist/cli.js"
+  },
   "scripts": {
     "build": "ts-node --files src/index.ts",
     "lint": "eslint --fix '{src,tests}/**/*.{ts,js}'",
