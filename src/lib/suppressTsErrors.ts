@@ -1,4 +1,4 @@
-import { SourceFile } from "ts-morph";
+import { SourceFile, ts } from "ts-morph";
 import { buildComment } from "./buildComment";
 
 export const suppressTsErrors = ({
@@ -19,7 +19,10 @@ export const suppressTsErrors = ({
 
   sourceFile.getPreEmitDiagnostics().forEach((d) => {
     const lineNumber = d.getLineNumber();
-    if (lineNumber === undefined) {
+    const diagnosticCategory = d.getCategory();
+
+    // Skip not error
+    if (lineNumber === undefined || diagnosticCategory !== 1) {
       return;
     }
 

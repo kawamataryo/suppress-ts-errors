@@ -1,8 +1,13 @@
 import { Project } from "ts-morph";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeAll } from "vitest";
 import { suppressTsErrors } from "../suppressTsErrors";
 
 describe("suppressTsErrors", () => {
+  let project: Project;
+  beforeAll(() => {
+    project = new Project({ compilerOptions: { strict: true } });
+  });
+
   it.each([
     {
       text: `
@@ -113,8 +118,9 @@ describe("suppressTsErrors", () => {
       expectedText,
       expectedCommentCount,
     }) => {
-      const project = new Project({ compilerOptions: { strict: true } });
-      const sourceFile = project.createSourceFile("target.ts", text);
+      const sourceFile = project.createSourceFile("target.ts", text, {
+        overwrite: true,
+      });
 
       const result = suppressTsErrors({
         sourceFile,
