@@ -30,6 +30,8 @@
     "@typescript-eslint/parser": "^4.32.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.4.1",
     "prettier": "^2.4.1",
     "ts-morph": "^14.0.0",
     "ts-node": "^10.2.1",
