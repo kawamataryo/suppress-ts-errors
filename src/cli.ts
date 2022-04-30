@@ -4,7 +4,7 @@ import { Project } from "ts-morph";
 import { getArgs } from "./lib/args";
 import { existsSync } from "fs";
 import { generateProgressBar } from "./lib/progressbar";
-import { buildComment } from "./lib/buildComment";
+import { suppressTsErrors } from "./lib/suppressTsErrors";
 
 const main = () => {
   const args = getArgs();
@@ -24,46 +24,17 @@ const main = () => {
   progressBar.start(sourceFiles.length, 0);
 
   sourceFiles.forEach((sourceFile) => {
-    const sourceTextArray = sourceFile.getFullText().split("\n");
-    let insertedCommentCountPerFile = 0;
-    const listOfLineNumberWithErrors: number[] = [];
-
-    sourceFile.getPreEmitDiagnostics().forEach((d) => {
-      const lineNumber = d.getLineNumber();
-      if (lineNumber === undefined) {
-        return;
-      }
-
-      // Skip errors in rows with errors already found
-      if (listOfLineNumberWithErrors.includes(lineNumber)) {
-        return;
-      }
-
-      // Build comments with indentation matching the error location
-      const insertComment = buildComment({
+    const { text: textWithComment, count: insertedCommentCountPerFile } =
+      suppressTsErrors({
         sourceFile,
-        lineNumber,
-        commentType: args.commentType,
-        errorCode: d.getCode(),
+        commentType: args.commentType as CommentType,
         withErrorCode: args.withErrorCode,
       });
 
-      // Insert comment
-      sourceTextArray.splice(
-        lineNumber + insertedCommentCountPerFile - 1,
-        0,
-        insertComment
-      );
-
-      // Increment comment counts
-      insertedCommentCountPerFile += 1;
-      insertedCommentCount += 1;
-      listOfLineNumberWithErrors.push(lineNumber);
-    });
-
     if (insertedCommentCountPerFile > 0) {
-      sourceFile.replaceWithText(sourceTextArray.join("\n"));
+      sourceFile.replaceWithText(textWithComment);
       sourceFile.saveSync();
+      insertedCommentCount += insertedCommentCountPerFile;
     }
     progressBar.increment();
   });
