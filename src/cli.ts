@@ -3,8 +3,8 @@
 import { Project } from "ts-morph";
 import { getArgs } from "./lib/args";
 import { existsSync } from "fs";
-import { getWhiteSpaceCountFromLineNumber } from "./lib/getWhiteSpaceCountFromLineNumber";
 import { generateProgressBar } from "./lib/progressbar";
+import { buildComment } from "./lib/buildComment";
 
 const main = () => {
   const args = getArgs();
@@ -40,13 +40,13 @@ const main = () => {
       }
 
       // Build comments with indentation matching the error location
-      const whiteSpaceCount = getWhiteSpaceCountFromLineNumber(
+      const insertComment = buildComment({
         sourceFile,
-        lineNumber
-      );
-      const insertComment = `${" ".repeat(whiteSpaceCount)}// @ts-expect-error${
-        args.withErrorCode ? ` TS${d.getCode()}` : ""
-      }`;
+        lineNumber,
+        commentType: args.commentType,
+        errorCode: d.getCode(),
+        withErrorCode: args.withErrorCode,
+      });
 
       // Insert comment
       sourceTextArray.splice(

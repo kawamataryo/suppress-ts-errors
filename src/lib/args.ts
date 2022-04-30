@@ -14,7 +14,13 @@ export const getArgs = () =>
       withErrorCode: {
         type: "boolean",
         default: false,
-        alias: "e",
+        alias: "c",
+        demandOption: true,
+      },
+      commentType: {
+        type: "number",
+        default: 1,
+        alias: "t",
         demandOption: true,
       },
     })
