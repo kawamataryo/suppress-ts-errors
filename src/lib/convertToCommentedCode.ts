@@ -1,10 +1,18 @@
-import { CompilerOptions, Project } from "ts-morph";
-import { getWhiteSpaceCountFromLineNumber } from "./getWhiteSpaceCountFromLineNumber";
+import { CompilerOptions, Project, SourceFile } from "ts-morph";
 
 /*
 This function is not used.
 It was used to check the feature of ts-morph
 */
+
+const getWhiteSpaceCountFromLineNumber = (
+  sourceFile: SourceFile,
+  lineNumber: number
+): number => {
+  const targetLineString = sourceFile.getFullText().split("\n")[lineNumber - 1];
+  return targetLineString.search(/\S/);
+};
+
 export const convertToCommentedCode = ({
   code,
   comment,
