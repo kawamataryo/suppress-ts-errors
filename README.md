@@ -7,15 +7,16 @@
 <a href="https://github.com/kawamataryo/suppress-ts-errors" target="__blank"><img alt="GitHub stars" src="https://img.shields.io/github/stars/kawamataryo/suppress-ts-errors?style=social"></a>
 
 Cli tool to add comments to suppress typescript type errors.
+Add `@ts-ignore` or `@ts-expect-error` comments to all locations where errors are occurring.
 
 ![Kapture 2022-05-01 at 15 35 50](https://user-images.githubusercontent.com/11070996/166135217-82e23b1e-7c9f-40c3-88ad-985b021b842a.gif)
-
 
 ## 🛠 Usage
 
 **Run**
 
 ```bash
+// In the directory containing the tsconfig.json of the project where the type error is occurring
 $ npx suppress-ts-errors
 ```
 
@@ -29,12 +30,12 @@ $ npx suppress-ts-errors
 
 ## 📄 License
 
-vue-word-highlighter is available under the MIT License.
+suppress-ts-errors is available under the MIT License.
 
 ## 🛣️ Road map
 
 - [x] Extract main logic from clit.ts and add unit test.
 - [x] Arrange README. Add Options and Usage.
-- [ ] release to npm
+- [x] release to npm
 - [ ] Support for `.tsx`.
 - [ ] Support for `.vue`.
