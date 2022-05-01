@@ -20,7 +20,7 @@
     "url": "git+https://github.com/kawamataryo/suppress-ts-errors.git"
   },
   "author": "Ryo Kawamata <ba068082@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/kawamataryo/suppress-ts-errors/issues"
   },
