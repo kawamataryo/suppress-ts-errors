@@ -28,9 +28,9 @@ function isSomKindOfJsxAtLine(
     ts.SyntaxKind.JsxFragment,
     ts.SyntaxKind.JsxOpeningFragment,
     ts.SyntaxKind.JsxClosingFragment,
-    ts.SyntaxKind.JsxAttribute,
     ts.SyntaxKind.JsxExpression,
     // NOTE: Errors in element tags are not jsx comments, so exclude them
+    // ts.SyntaxKind.JsxAttribute,
     // ts.SyntaxKind.JsxAttributes,
     // ts.SyntaxKind.JsxSpreadAttribute,
     // ts.SyntaxKind.JsxOpeningElement,
