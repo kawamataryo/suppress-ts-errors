@@ -16,7 +16,7 @@ Add `@ts-ignore` or `@ts-expect-error` comments to all locations where errors ar
 **Run**
 
 ```bash
-// In the directory containing the tsconfig.json of the project where the type error is occurring
+# In the directory containing the tsconfig.json of the project where the type error is occurring
 $ npx suppress-ts-errors
 ```
 
