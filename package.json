@@ -26,6 +26,8 @@
   },
   "homepage": "https://github.com/kawamataryo/ts-node-starter#readme",
   "devDependencies": {
+    "@commitlint/cli": "^16.2.4",
+    "@commitlint/config-conventional": "^16.2.4",
     "@types/cli-progress": "^3.9.2",
     "@types/node": "^16.10.2",
     "@types/yargs": "^17.0.10",
@@ -33,11 +35,13 @@
     "@typescript-eslint/parser": "^4.32.0",
     "ansi-colors": "^4.1.1",
     "cli-progress": "^3.10.0",
+    "cz-conventional-changelog": "3.3.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.4.1",
     "prettier": "^2.4.1",
+    "semantic-release": "^19.0.2",
     "ts-morph": "^14.0.0",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3",
@@ -49,5 +53,47 @@
       "eslint --cache --fix",
       "prettier --write"
     ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset": "angular",
+          "presetConfig": {
+            "types": [
+              {
+                "type": "chore",
+                "section": "Chore"
+              },
+              {
+                "type": "refactor",
+                "section": "Refactor"
+              },
+              {
+                "type": "perf",
+                "section": "Performance"
+              }
+            ]
+          }
+        }
+      ],
+      "@semantic-release/github",
+      "@semantic-release/npm"
+    ],
+    "branches": [
+      "main"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
