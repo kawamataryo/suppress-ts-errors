@@ -17,14 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kawamataryo/ts-node-starter.git"
+    "url": "git+https://github.com/kawamataryo/suppress-ts-errors.git"
   },
   "author": "Ryo Kawamata <ba068082@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kawamataryo/ts-node-starter/issues"
+    "url": "https://github.com/kawamataryo/suppress-ts-errors/issues"
   },
-  "homepage": "https://github.com/kawamataryo/ts-node-starter#readme",
+  "homepage": "https://github.com/kawamataryo/suppress-ts-errors#readme",
   "devDependencies": {
     "@commitlint/cli": "^16.2.4",
     "@commitlint/config-conventional": "^16.2.4",
