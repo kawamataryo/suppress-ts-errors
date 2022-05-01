@@ -1,4 +1,4 @@
-import { SourceFile, ts } from "ts-morph";
+import { SourceFile } from "ts-morph";
 import { buildComment } from "./buildComment";
 
 export const suppressTsErrors = ({
