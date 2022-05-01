@@ -3,7 +3,6 @@
   "version": "0.2.1",
   "description": "cli tool to add comments to suppress typescript type errors",
   "main": "index.js",
-  "packageManager": "pnpm@6.32.2",
   "bin": {
     "suppress-ts-errors": "dist/cli.js"
   },
