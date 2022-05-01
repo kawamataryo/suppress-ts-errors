@@ -37,5 +37,5 @@ suppress-ts-errors is available under the MIT License.
 - [x] Extract main logic from clit.ts and add unit test.
 - [x] Arrange README. Add Options and Usage.
 - [x] release to npm
-- [ ] Support for `.tsx`.
+- [x] Support for `.tsx`.
 - [ ] Support for `.vue`.
