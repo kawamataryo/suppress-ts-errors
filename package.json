@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kawamataryo/suppress-ts-errors.git"
+    "url": "https://github.com/kawamataryo/suppress-ts-errors.git"
   },
   "author": "Ryo Kawamata <ba068082@gmail.com>",
   "license": "MIT",
