@@ -13,6 +13,7 @@ describe("suppressTsErrors", () => {
       text: `
         const a: string = 1;
       `,
+      fileName: "target.ts",
       commentType: 1,
       withErrorCode: false,
       expectedText: `
@@ -25,6 +26,7 @@ describe("suppressTsErrors", () => {
       text: `
         const a: string = 1;
       `,
+      fileName: "target.ts",
       commentType: 1,
       withErrorCode: true,
       expectedText: `
@@ -38,6 +40,7 @@ describe("suppressTsErrors", () => {
         const func = (num: number) => num
         func('a')
       `,
+      fileName: "target.ts",
       commentType: 2,
       withErrorCode: false,
       expectedText: `
@@ -54,6 +57,7 @@ describe("suppressTsErrors", () => {
 
         let a: string = 1;
       `,
+      fileName: "target.ts",
       commentType: 1,
       withErrorCode: true,
       expectedText: `
@@ -72,6 +76,7 @@ describe("suppressTsErrors", () => {
           return num.map(r => 1)
         }
       `,
+      fileName: "target.ts",
       commentType: 1,
       withErrorCode: true,
       expectedText: `
@@ -96,12 +101,53 @@ describe("suppressTsErrors", () => {
           return num
         }
       `,
+      fileName: "target.ts",
       commentType: 1,
+    },
+    {
+      text: `
+        function tsxFunc(num: number) {
+          return <div>{num.map(n => n)}</div>
+        }
+      `,
+      fileName: "target.tsx",
+      commentType: 1,
+      withErrorCode: true,
+      expectedText: `
+        function tsxFunc(num: number) {
+          // @ts-expect-error TS7026
+          return <div>{num.map(n => n)}</div>
+        }
+      `,
+      expectedCommentCount: 1,
+    },
+    {
+      text: `
+        function tsxFunc(num: number) {
+          return (
+            <div>{num.map(n => n)}</div>
+          )
+        }
+      `,
+      fileName: "target.tsx",
+      commentType: 1,
+      withErrorCode: true,
+      expectedText: `
+        function tsxFunc(num: number) {
+          return (
+            {/*
+             // @ts-expect-error TS7026 */}
+            <div>{num.map(n => n)}</div>
+          )
+        }
+      `,
+      expectedCommentCount: 1,
     },
     {
       text: `
         const a: number = 1;
       `,
+      fileName: "target.ts",
       commentType: 1,
       withErrorCode: true,
       expectedText: `
@@ -114,11 +160,12 @@ describe("suppressTsErrors", () => {
     ({
       text,
       commentType,
+      fileName,
       withErrorCode,
       expectedText,
       expectedCommentCount,
     }) => {
-      const sourceFile = project.createSourceFile("target.ts", text, {
+      const sourceFile = project.createSourceFile(fileName, text, {
         overwrite: true,
       });
 

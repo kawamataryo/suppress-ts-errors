@@ -1,4 +1,4 @@
-import { SourceFile } from "ts-morph";
+import { SourceFile, ts } from "ts-morph";
 import { COMMENT_TYPE } from "./constants";
 
 const getWhiteSpaceCountFromLineNumber = (
@@ -8,6 +8,34 @@ const getWhiteSpaceCountFromLineNumber = (
   const targetLineString = sourceFile.getFullText().split("\n")[lineNumber - 1];
   return targetLineString.search(/\S/);
 };
+
+function isSomKindOfJsxAtLine(
+  sourceFile: SourceFile,
+  lineNumber: number
+): boolean {
+  const targetNode = sourceFile.getDescendants().find((node) => {
+    return lineNumber === node.getStartLineNumber();
+  });
+  if (!targetNode) {
+    throw new Error(`targetNode is not found at line ${lineNumber}`);
+  }
+  return [
+    ts.SyntaxKind.JsxText,
+    ts.SyntaxKind.JsxTextAllWhiteSpaces,
+    ts.SyntaxKind.JsxElement,
+    ts.SyntaxKind.JsxSelfClosingElement,
+    ts.SyntaxKind.JsxClosingElement,
+    ts.SyntaxKind.JsxFragment,
+    ts.SyntaxKind.JsxOpeningFragment,
+    ts.SyntaxKind.JsxClosingFragment,
+    ts.SyntaxKind.JsxAttribute,
+    ts.SyntaxKind.JsxExpression,
+    // NOTE: Errors in element tags are not jsx comments, so exclude them
+    // ts.SyntaxKind.JsxAttributes,
+    // ts.SyntaxKind.JsxSpreadAttribute,
+    // ts.SyntaxKind.JsxOpeningElement,
+  ].includes(targetNode.getKind());
+}
 
 export const buildComment = ({
   sourceFile,
@@ -28,7 +56,12 @@ export const buildComment = ({
     sourceFile,
     lineNumber
   );
-  return `${" ".repeat(whiteSpaceCount)}// ${comment}${
-    withErrorCode ? ` TS${errorCode}` : ""
-  }`;
+  sourceFile;
+  return isSomKindOfJsxAtLine(sourceFile, lineNumber)
+    ? `${" ".repeat(whiteSpaceCount)}{/*\n${" ".repeat(
+        whiteSpaceCount + 1
+      )}// ${comment}${withErrorCode ? ` TS${errorCode}` : ""} */}`
+    : `${" ".repeat(whiteSpaceCount)}// ${comment}${
+        withErrorCode ? ` TS${errorCode}` : ""
+      }`;
 };
