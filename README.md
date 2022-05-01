@@ -1,6 +1,10 @@
 # suppress-ts-errors
 
 [![CI](https://github.com/kawamataryo/suppress-ts-errors/actions/workflows/ci.yml/badge.svg)](https://github.com/kawamataryo/suppress-ts-errors/actions/workflows/ci.yml)
+<a href="https://npmcharts.com/compare/suppress-ts-errors?minimal=true"><img src="https://img.shields.io/npm/dt/suppress-ts-errors.svg" alt="Downloads"></a>
+<a href="https://www.npmjs.com/package/suppress-ts-errors"><img src="https://img.shields.io/npm/v/suppress-ts-errors.svg" alt="Version"></a>
+<a href="https://www.npmjs.com/package/suppress-ts-errors"><img src="https://img.shields.io/npm/l/suppress-ts-errors.svg" alt="License"></a>
+<a href="https://github.com/kawamataryo/suppress-ts-errors" target="__blank"><img alt="GitHub stars" src="https://img.shields.io/github/stars/kawamataryo/suppress-ts-errors?style=social"></a>
 
 Cli tool to add comments to suppress typescript type errors.
 
