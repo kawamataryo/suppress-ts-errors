@@ -32,6 +32,8 @@
   "dependencies": {
     "ansi-colors": "^4.1.1",
     "cli-progress": "^3.10.0",
+    "glob": "^8.0.1",
+    "node-html-parser": "^5.3.3",
     "ts-morph": "^14.0.0",
     "yargs": "^17.4.1"
   },
@@ -39,6 +41,7 @@
     "@commitlint/cli": "^16.2.4",
     "@commitlint/config-conventional": "^16.2.4",
     "@types/cli-progress": "^3.9.2",
+    "@types/glob": "^7.2.0",
     "@types/node": "^16.10.2",
     "@types/yargs": "^17.0.10",
     "@typescript-eslint/eslint-plugin": "^4.32.0",

@@ -8,34 +8,43 @@
 
 Cli tool to add comments to suppress typescript type errors.  
 Add `@ts-ignore` or `@ts-expect-error` comments to all locations where errors are occurring.
+Support for `.ts`, `.tsx`, `.vue`.
 
 ![Kapture 2022-05-01 at 15 35 50](https://user-images.githubusercontent.com/11070996/166135217-82e23b1e-7c9f-40c3-88ad-985b021b842a.gif)
 
 ## 🛠 Usage
 
-**Run**
+### Run to `.ts` and `.tsx`
+
+Run the script in the directory where `tsconfig.json` is located.
 
 ```bash
-# In the directory containing the tsconfig.json of the project where the type error is occurring
 $ npx suppress-ts-errors
 ```
 
-**options**
+### Run to `.vue`
 
-| option                | default           | description                                                                                                                                                                                                                                                                                                                        |
-| --------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| -p, --tsconfig-path   | `./tsconfig.json` | Path to tsconfig.json.                                                                                                                                                                                                                                                                                                             |
-| -t, --comment-type    | `1`               | Choice of inserted comment type. `1` is [@ts-expected-error](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-9.html#-ts-expect-error-comments), `2` is [@ts-ignore](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-6.html#suppress-errors-in-ts-files-using--ts-ignore-comments). |
-| -c, --with-error-code | `true`            | Add error code to comment. e.g. TS2345.                                                                                                                                                                                                                                                                                            |
+When targeting vue sfc, the path of the vue component must be specified with the glob pattern.
+
+**Notice:** It does not support commenting out type errors in the `<template>` section of vue, only the `<script>` section.
+
+```bash
+$ npx suppress-ts-errors vue "src/**/*.vue"
+```
+
+### options
+
+| option              | default           | description                                                                                                                                                                                                                                                                                                                        |
+| ------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| -t, --tsconfig-path | `./tsconfig.json` | Path to tsconfig.json.                                                                                                                                                                                                                                                                                                             |
+| -c, --comment-type  | `1`               | Choice of inserted comment type. `1` is [@ts-expected-error](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-9.html#-ts-expect-error-comments), `2` is [@ts-ignore](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-6.html#suppress-errors-in-ts-files-using--ts-ignore-comments). |
+| -e, --error-code    | `true`            | Add error code to comment. e.g. TS2345.                                                                                                                                                                                                                                                                                            |
+
+## ✨ Contributing
+
+Contributions are welcome 🎉 We accept contributions via Pull Requests.
+See [this guide](https://github.com/kawamataryo/suppress-ts-errors/blob/main/CONTRIBUTING.md) on how to make a contribution.
 
 ## 📄 License
 
 suppress-ts-errors is available under the MIT License.
-
-## 🛣️ Road map
-
-- [x] Extract main logic from clit.ts and add unit test.
-- [x] Arrange README. Add Options and Usage.
-- [x] release to npm
-- [x] Support for `.tsx`.
-- [ ] Support for `.vue`.

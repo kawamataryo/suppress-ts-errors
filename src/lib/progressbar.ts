@@ -1,10 +1,12 @@
 import cliProgress from "cli-progress";
-import _colors from "ansi-colors";
+import colors from "ansi-colors";
 
-export const generateProgressBar = (): cliProgress.SingleBar =>
+export const generateProgressBar = (
+  colorFunc: colors.StyleFunction = colors.blue
+): cliProgress.SingleBar =>
   new cliProgress.SingleBar(
     {
-      format: `progress [${_colors.blue(
+      format: `progress [${colorFunc(
         "{bar}"
       )}] {percentage}% | {value}/{total}`,
     },
