@@ -29,11 +29,11 @@ function isSomKindOfJsxAtLine(
     ts.SyntaxKind.JsxOpeningFragment,
     ts.SyntaxKind.JsxClosingFragment,
     ts.SyntaxKind.JsxExpression,
+    ts.SyntaxKind.JsxOpeningElement,
     // NOTE: Errors in element tags are not jsx comments, so exclude them
     // ts.SyntaxKind.JsxAttribute,
     // ts.SyntaxKind.JsxAttributes,
     // ts.SyntaxKind.JsxSpreadAttribute,
-    // ts.SyntaxKind.JsxOpeningElement,
   ].includes(targetNode.getKind());
 }
 
