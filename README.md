@@ -7,7 +7,7 @@
 <a href="https://github.com/kawamataryo/suppress-ts-errors" target="__blank"><img alt="GitHub stars" src="https://img.shields.io/github/stars/kawamataryo/suppress-ts-errors?style=social"></a>
 
 Cli tool to add comments to suppress typescript type errors.  
-Add `@ts-ignore` or `@ts-expect-error` comments to all locations where errors are occurring.
+Add `@ts-ignore` or `@ts-expect-error` comments to all locations where errors are occurring.  
 Support for `.ts`, `.tsx`, `.vue`.
 
 ![Kapture 2022-05-01 at 15 35 50](https://user-images.githubusercontent.com/11070996/166135217-82e23b1e-7c9f-40c3-88ad-985b021b842a.gif)
@@ -24,7 +24,7 @@ $ npx suppress-ts-errors
 
 ### Run to `.vue`
 
-When targeting vue sfc, the path of the vue component must be specified with the glob pattern.
+When targeting vue sfc, the path of the vue component must be specified with the glob pattern.  
 **Notice:** It does not support commenting out type errors in the `<template>` section of vue, only the `<script>` section.
 
 ```bash
