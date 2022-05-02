@@ -12,7 +12,7 @@ Support for `.ts`, `.tsx`, `.vue`.
 
 ![Kapture 2022-05-01 at 15 35 50](https://user-images.githubusercontent.com/11070996/166135217-82e23b1e-7c9f-40c3-88ad-985b021b842a.gif)
 
-## 🛠 Usage
+## 🚀 Usage
 
 ### Run to `.ts` and `.tsx`
 
@@ -25,7 +25,6 @@ $ npx suppress-ts-errors
 ### Run to `.vue`
 
 When targeting vue sfc, the path of the vue component must be specified with the glob pattern.
-
 **Notice:** It does not support commenting out type errors in the `<template>` section of vue, only the `<script>` section.
 
 ```bash
@@ -42,8 +41,8 @@ $ npx suppress-ts-errors vue "src/**/*.vue"
 
 ## ✨ Contributing
 
-Contributions are welcome 🎉 We accept contributions via Pull Requests.
-See [this guide](https://github.com/kawamataryo/suppress-ts-errors/blob/main/CONTRIBUTING.md) on how to make a contribution.
+Contributions are welcome 🎉  
+We accept contributions via Pull Requests. See [this guide](https://github.com/kawamataryo/suppress-ts-errors/blob/main/CONTRIBUTING.md) on how to make a contribution.
 
 ## 📄 License
 
