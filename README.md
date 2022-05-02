@@ -7,7 +7,7 @@
 <a href="https://github.com/kawamataryo/suppress-ts-errors" target="__blank"><img alt="GitHub stars" src="https://img.shields.io/github/stars/kawamataryo/suppress-ts-errors?style=social"></a>
 
 Cli tool to add comments to suppress typescript type errors.  
-Add `@ts-ignore` or `@ts-expect-error` comments to all locations where errors are occurring.  
+Add [@ts-expected-error](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-9.html#-ts-expect-error-comments) or [@ts-ignore](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-6.html#suppress-errors-in-ts-files-using--ts-ignore-comments) comments to all locations where errors are occurring.  
 Support for `.ts`, `.tsx`, `.vue`.
 
 ![Kapture 2022-05-01 at 15 35 50](https://user-images.githubusercontent.com/11070996/166135217-82e23b1e-7c9f-40c3-88ad-985b021b842a.gif)
