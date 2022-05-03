@@ -14,7 +14,7 @@ Support for `.ts`, `.tsx`, `.vue`.
 
 ## 🚀 Usage
 
-### Running scripts to `.ts` and `.tsx
+### Running scripts to `.ts` and `.tsx`
 
 Run the script in the directory where `tsconfig.json` is located.
 
