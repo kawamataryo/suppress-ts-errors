@@ -14,7 +14,7 @@ Support for `.ts`, `.tsx`, `.vue`.
 
 ## 🚀 Usage
 
-### Run to `.ts` and `.tsx`
+### Running scripts to `.ts` and `.tsx
 
 Run the script in the directory where `tsconfig.json` is located.
 
@@ -22,7 +22,7 @@ Run the script in the directory where `tsconfig.json` is located.
 $ npx suppress-ts-errors
 ```
 
-### Run to `.vue`
+### Running scripts to `.ts` `.vue`
 
 When targeting vue sfc, the path of the vue component must be specified with the glob pattern.  
 **Notice:** It does not support commenting out type errors in the `<template>` section of vue, only the `<script>` section.
