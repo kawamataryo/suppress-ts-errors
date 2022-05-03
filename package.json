@@ -1,6 +1,6 @@
 {
   "name": "suppress-ts-errors",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "cli tool to add comments to suppress typescript type errors",
   "main": "index.js",
   "bin": {
