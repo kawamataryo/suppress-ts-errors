@@ -73,8 +73,7 @@ vi.mock("../../lib/extractTypeScriptFromVue", () => {
   };
 });
 
-// TODO: For some reason, only ci falls off.
-describe.skip("vueHandler", () => {
+describe("vueHandler", () => {
   afterEach(() => {
     vi.restoreAllMocks();
   });

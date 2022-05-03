@@ -33,8 +33,7 @@ vi.mock("../../lib/suppressTsErrors", () => {
   };
 });
 
-// TODO: For some reason, only ci falls off.
-describe.skip("tsHandler", () => {
+describe("tsHandler", () => {
   afterEach(() => {
     vi.restoreAllMocks();
   });
