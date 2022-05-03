@@ -7,73 +7,71 @@ import {
   writeFile as writeFileMock,
 } from "fs/promises";
 
-// const sourceFileMock = {};
-// const mockFilePath = "src/example.vue";
-// const createSourceFileMock = vi.fn(() => sourceFileMock);
-// const mockPrevText = `
-// <template>
-//   <div>test</div>
-// </template>
-// <script lang="ts">
-//   const a: string = 1;
-// </script>
-// `;
-// const mockNewText = `
-// <template>
-//   <div>test</div>
-// </template>
-// <script lang="ts">
-// @ts-expect-error TS2578
-//   @ts-expect-error TS2322
-//   const a: string = 1;
-// </script>
-// `;
-// const mockPrevScript = `
-//   const a: string = 1;
-// `;
-// const mockNewScript = `
-// @ts-expect-error TS2578
-//   @ts-expect-error TS2322
-//   const a: string = 1;
-// `;
+const sourceFileMock = {};
+const mockFilePath = "src/example.vue";
+const createSourceFileMock = vi.fn(() => sourceFileMock);
+const mockPrevText = `
+<template>
+  <div>test</div>
+</template>
+<script lang="ts">
+  const a: string = 1;
+</script>
+`;
+const mockNewText = `
+<template>
+  <div>test</div>
+</template>
+<script lang="ts">
+  @ts-expect-error TS2322
+  const a: string = 1;
+</script>
+`;
+const mockPrevScript = `
+  const a: string = 1;
+`;
+const mockNewScript = `
+  @ts-expect-error TS2322
+  const a: string = 1;
+`;
 
-// vi.mock("ts-morph", () => {
-//   return {
-//     Project: vi.fn(() => ({
-//       createSourceFile: createSourceFileMock,
-//     })),
-//   };
-// });
+vi.mock("ts-morph", () => {
+  return {
+    Project: vi.fn(() => ({
+      createSourceFile: createSourceFileMock,
+    })),
+  };
+});
 
-// vi.mock("../../lib/suppressTsErrors", () => {
-//   return {
-//     suppressTsErrors: vi.fn(() => ({
-//       text: mockNewScript,
-//       count: 1,
-//     })),
-//   };
-// });
+vi.mock("../../lib/suppressTsErrors", () => {
+  return {
+    suppressTsErrors: vi.fn(() => ({
+      text: mockNewScript,
+      count: 1,
+    })),
+  };
+});
 
-// vi.mock("glob", () => {
-//   return {
-//     default: {
-//       sync: vi.fn(() => [mockFilePath]),
-//     },
-//   };
-// });
+vi.mock("glob", () => {
+  return {
+    default: {
+      sync: vi.fn(() => [mockFilePath]),
+    },
+  };
+});
 
-// vi.mock("fs/promises", () => {
-//   return {
-//     readFile: vi.fn(() => Promise.resolve(mockPrevText)),
-//     writeFile: vi.fn(() => Promise.resolve()),
-//   };
-// });
+vi.mock("fs/promises", () => {
+  return {
+    readFile: vi.fn(() => Promise.resolve(mockPrevText)),
+    writeFile: vi.fn(() => Promise.resolve()),
+  };
+});
 
-// vi.mock("../../lib/extractTypeScriptFromVue", () => {
-//   return {
-//     extractTypeScriptFromVue: vi.fn(() => mockPrevScript),
-//   };
-// });
+vi.mock("../../lib/extractTypeScriptFromVue", () => {
+  return {
+    extractTypeScriptFromVue: vi.fn(() => mockPrevScript),
+  };
+});
 
 // TODO: For some reason, only ci falls off.
 describe.skip("vueHandler", () => {
