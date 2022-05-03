@@ -16,22 +16,22 @@ const mockText = `
   const a: string = 1;
 `;
 
-vi.mock("ts-morph", () => {
-  return {
-    Project: vi.fn(() => ({
-      getSourceFiles: getSourceFilesMock,
-    })),
-  };
-});
+// vi.mock("ts-morph", () => {
+//   return {
+//     Project: vi.fn(() => ({
+//       getSourceFiles: getSourceFilesMock,
+//     })),
+//   };
+// });
 
-vi.mock("../../lib/suppressTsErrors", () => {
-  return {
-    suppressTsErrors: vi.fn(() => ({
-      text: mockText,
-      count: 1,
-    })),
-  };
-});
+// vi.mock("../../lib/suppressTsErrors", () => {
+//   return {
+//     suppressTsErrors: vi.fn(() => ({
+//       text: mockText,
+//       count: 1,
+//     })),
+//   };
+// });
 
 // TODO: For some reason, only ci falls off.
 describe.skip("tsHandler", () => {
