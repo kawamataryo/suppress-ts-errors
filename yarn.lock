@@ -4884,7 +4884,7 @@ validate-npm-package-name@^4.0.0:
   dependencies:
     builtins "^5.0.0"
 
-vite@^2.9.7:
+vite@^2.9.8:
   version "2.9.8"
   resolved "https://registry.yarnpkg.com/vite/-/vite-2.9.8.tgz#2c2cb0790beb0fbe4b8c0995b80fe691a91c2545"
   integrity sha512-zsBGwn5UT3YS0NLSJ7hnR54+vUKfgzMUh/Z9CxF1YKEBVIe213+63jrFLmZphgGI5zXwQCSmqIdbPuE8NJywPw==
@@ -4896,10 +4896,10 @@ vite@^2.9.7:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vitest@0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/vitest/-/vitest-0.12.0.tgz#824ea2e9d22911d975233bb18262fa687b9dd0d1"
-  integrity sha512-ITdIJJ5nl7eu2Iq4oON/wgpgRbhUR+50ShdMsUw87zByzjtJIx2vPbkz+J8Bq6eEUvyy8p7j0bU1sB/xWz05bw==
+vitest@0.12.2:
+  version "0.12.2"
+  resolved "https://registry.yarnpkg.com/vitest/-/vitest-0.12.2.tgz#64208e25a3729cd8b05902e493ec013e4dde71fd"
+  integrity sha512-olNsbdqYEPsAXbMe9Rgg9X8bCWO7+wn+AvoRqNmCOze32b9qQ+FhU1jO5H6Z6AxnTWGOGqoLSrXBea73xdOo1A==
   dependencies:
     "@types/chai" "^4.3.1"
     "@types/chai-subset" "^1.3.3"
@@ -4907,7 +4907,7 @@ vitest@0.12.0:
     local-pkg "^0.4.1"
     tinypool "^0.1.3"
     tinyspy "^0.3.2"
-    vite "^2.9.7"
+    vite "^2.9.8"
 
 walk-up-path@^1.0.0:
   version "1.0.0"
