@@ -69,7 +69,54 @@ describe("buildComment", () => {
       }
       `,
       lineNumber: 4,
-      expected: "          {/*\n           // @ts-expect-error TS2322 */}",
+      expected: "          // @ts-expect-error TS2322",
+    },
+    {
+      ...baseParam,
+      fileName: "target.tsx",
+      source: `
+      function tsxFunc(num: number) {
+        return (
+          <div>
+            <div>{num.map(n => n)}</div>
+            <div>foo</div>
+          </div>
+        )
+      }
+      `,
+      lineNumber: 5,
+      expected: "            {/*\n             // @ts-expect-error TS2322 */}",
+    },
+    {
+      ...baseParam,
+      fileName: "target.tsx",
+      source: `
+      function tsxFunc(num: number) {
+        return (
+          <div>
+            <div>foo</div>
+            <div>{num.map(n => n)}</div>
+          </div>
+        )
+      }
+      `,
+      lineNumber: 6,
+      expected: "            {/*\n             // @ts-expect-error TS2322 */}",
+    },
+    {
+      ...baseParam,
+      fileName: "target.tsx",
+      source: `
+      function tsxFunc(num: number) {
+        return (
+          <div>{
+            num.map(n => n)
+          }</div>
+        )
+      }
+      `,
+      lineNumber: 5,
+      expected: "            // @ts-expect-error TS2322",
     },
     {
       ...baseParam,
