@@ -19,7 +19,14 @@ function isSomKindOfJsxAtLine(
   if (!targetNode) {
     throw new Error(`targetNode is not found at line ${lineNumber}`);
   }
-  return [
+
+  const isJsxStartOpeningElement =
+    targetNode?.getPreviousSibling()?.getKind() ===
+    ts.SyntaxKind.OpenParenToken;
+  const isInnerJsxElement =
+    targetNode?.getPreviousSibling()?.getKind() ===
+    ts.SyntaxKind.JsxOpeningElement;
+  const isJsxElement = [
     ts.SyntaxKind.JsxText,
     ts.SyntaxKind.JsxTextAllWhiteSpaces,
     ts.SyntaxKind.JsxElement,
@@ -35,6 +42,8 @@ function isSomKindOfJsxAtLine(
     // ts.SyntaxKind.JsxAttributes,
     // ts.SyntaxKind.JsxSpreadAttribute,
   ].includes(targetNode.getKind());
+
+  return (isJsxElement && !isJsxStartOpeningElement) || isInnerJsxElement;
 }
 
 export const buildComment = ({

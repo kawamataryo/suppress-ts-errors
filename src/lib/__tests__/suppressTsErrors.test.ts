@@ -1,11 +1,13 @@
-import { Project } from "ts-morph";
+import { Project, ts } from "ts-morph";
 import { describe, it, expect, beforeAll } from "vitest";
 import { suppressTsErrors } from "../suppressTsErrors";
 
-describe("suppressTsErrors", () => {
+describe.only("suppressTsErrors", () => {
   let project: Project;
   beforeAll(() => {
-    project = new Project({ compilerOptions: { strict: true } });
+    project = new Project({
+      compilerOptions: { strict: true, jsx: "React" as unknown as ts.JsxEmit },
+    });
   });
 
   it.each([
@@ -115,7 +117,7 @@ describe("suppressTsErrors", () => {
       withErrorCode: true,
       expectedText: `
         function tsxFunc(num: number) {
-          // @ts-expect-error TS7026
+          // @ts-expect-error TS2339
           return <div>{num.map(n => n)}</div>
         }
       `,
@@ -135,13 +137,43 @@ describe("suppressTsErrors", () => {
       expectedText: `
         function tsxFunc(num: number) {
           return (
-            {/*
-             // @ts-expect-error TS7026 */}
+            // @ts-expect-error TS2339
             <div>{num.map(n => n)}</div>
           )
         }
       `,
       expectedCommentCount: 1,
+    },
+    {
+      text: `
+        function tsxFunc(num: number) {
+          return (
+            <div id={1}>
+              <div>{num.map(n => n)}</div>
+              <div>{num.map(n => n)}</div>
+            </div>
+          )
+        }
+      `,
+      fileName: "target.tsx",
+      commentType: 1,
+      withErrorCode: true,
+      expectedText: `
+        function tsxFunc(num: number) {
+          return (
+            // @ts-expect-error TS2322
+            <div id={1}>
+              {/*
+               // @ts-expect-error TS2339 */}
+              <div>{num.map(n => n)}</div>
+              {/*
+               // @ts-expect-error TS2339 */}
+              <div>{num.map(n => n)}</div>
+            </div>
+          )
+        }
+      `,
+      expectedCommentCount: 3,
     },
     {
       text: `
@@ -156,7 +188,7 @@ describe("suppressTsErrors", () => {
       expectedCommentCount: 0,
     },
   ])(
-    "suppress ts error",
+    "suppress ts error $text",
     ({
       text,
       commentType,
