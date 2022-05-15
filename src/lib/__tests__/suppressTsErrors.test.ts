@@ -2,7 +2,7 @@ import { Project, ts } from "ts-morph";
 import { describe, it, expect, beforeAll } from "vitest";
 import { suppressTsErrors } from "../suppressTsErrors";
 
-describe.only("suppressTsErrors", () => {
+describe("suppressTsErrors", () => {
   let project: Project;
   beforeAll(() => {
     project = new Project({
