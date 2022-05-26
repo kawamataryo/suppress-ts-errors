@@ -34,7 +34,7 @@
     "cli-progress": "^3.10.0",
     "glob": "^8.0.1",
     "node-html-parser": "^5.3.3",
-    "ts-morph": "^14.0.0",
+    "ts-morph": "^15.0.0",
     "yargs": "^17.4.1"
   },
   "devDependencies": {
