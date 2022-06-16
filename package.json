@@ -43,7 +43,7 @@
     "@types/cli-progress": "3.11.0",
     "@types/glob": "7.2.0",
     "@types/node": "16.11.41",
-    "@types/react": "18.0.13",
+    "@types/react": "18.0.14",
     "@types/yargs": "17.0.10",
     "@typescript-eslint/eslint-plugin": "5.28.0",
     "@typescript-eslint/parser": "5.28.0",
