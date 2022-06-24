@@ -1,38 +1,42 @@
+import colors from "ansi-colors";
 import type { Arguments, Argv } from "yargs";
 import { vueHandler } from "../handlers/vueHandler";
 import { DEFAULT_OPTIONS } from "../lib/constants";
-import { tsconfigExists } from "../lib/isExistTsConfig";
+import { isVueFiles, tsconfigExists } from "../lib/validator";
 
 type Options = DefaultOptions & {
-  targetPathPattern: string;
+  targetFilePaths: string[];
 };
 
-export const command = "vue [targetPathPattern]";
+export const command = "vue [targetFilePaths...]";
 export const desc = "Suppress TS errors in Vue files";
 
 export const builder = (yargs: Argv<Options>): Argv<Options> =>
   yargs
     .options(DEFAULT_OPTIONS)
-    .check(tsconfigExists)
-    .positional("target-path-pattern", {
+    .positional("targetFilePaths", {
+      array: true,
       type: "string",
-      requiresArg: true,
+      demandOption: true,
       description:
         "Path to the target vue file, which can be set with the glob pattern. eg: 'src/**/*.vue'",
-      default: "src/**/*.vue",
-    });
+    } as const)
+    .check(tsconfigExists)
+    .check(isVueFiles);
 
 export const handler = async (argv: Arguments<Options>): Promise<void> => {
-  const { targetPathPattern, tsconfigPath, commentType, errorCode } = argv;
+  const { targetFilePaths, tsconfigPath, commentType, errorCode } = argv;
 
   const insertedCommentCount = await vueHandler({
-    targetPathPattern,
+    targetFilePaths,
     tsconfigPath,
     commentType,
     errorCode,
   });
 
   console.log("\nCompleted 🎉");
-  console.log(`suppress errors: ${insertedCommentCount}`);
+  console.log(
+    "suppress errors: " + colors.green(insertedCommentCount.toString())
+  );
   process.exit(0);
 };

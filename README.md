@@ -28,7 +28,7 @@ When targeting vue sfc, the path of the vue component must be specified with the
 **Notice:** It does not support commenting out type errors in the `<template>` section of vue, only the `<script>` section.
 
 ```bash
-$ npx suppress-ts-errors vue "src/**/*.vue"
+$ npx suppress-ts-errors vue src/**/*.vue
 ```
 
 ### options

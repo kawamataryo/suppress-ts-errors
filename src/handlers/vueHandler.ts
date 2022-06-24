@@ -1,6 +1,5 @@
 import colors from "ansi-colors";
 import { readFile, writeFile } from "fs/promises";
-import glob from "glob";
 import { Project } from "ts-morph";
 import { extractTypeScriptFromVue } from "../lib/extractTypeScriptFromVue";
 import { generateProgressBar } from "../lib/progressBar";
@@ -10,14 +9,13 @@ export const vueHandler = async ({
   tsconfigPath,
   commentType,
   errorCode,
-  targetPathPattern,
+  targetFilePaths,
 }: DefaultOptions & {
-  targetPathPattern: string;
+  targetFilePaths: string[];
 }): Promise<number> => {
   // Extract script from vue files
-  const filePaths = glob.sync(targetPathPattern);
   const allFiles = await Promise.all(
-    filePaths.map(async (path) => {
+    targetFilePaths.map(async (path) => {
       const fullText = await readFile(path, "utf8");
       const script = extractTypeScriptFromVue(fullText);
       return {

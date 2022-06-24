@@ -1,7 +1,7 @@
 import type { Arguments, Argv } from "yargs";
 import { DEFAULT_OPTIONS } from "../lib/constants";
 import { tsHandler } from "../handlers/tsHandler";
-import { tsconfigExists } from "../lib/isExistTsConfig";
+import { tsconfigExists } from "../lib/validator";
 
 export const command: string[] = ["*", "ts"];
 export const desc = "Suppress TS errors in TypeScript files";
