@@ -41,7 +41,7 @@
     "@commitlint/config-conventional": "17.3.0",
     "@types/cli-progress": "3.11.0",
     "@types/glob": "8.0.0",
-    "@types/node": "18.11.12",
+    "@types/node": "18.11.13",
     "@types/react": "18.0.26",
     "@types/yargs": "17.0.17",
     "@typescript-eslint/eslint-plugin": "5.46.0",
