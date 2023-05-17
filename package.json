@@ -55,7 +55,7 @@
     "semantic-release": "19.0.5",
     "ts-node": "10.9.1",
     "typescript": "5.0.4",
-    "vitest": "0.31.0"
+    "vitest": "0.31.1"
   },
   "lint-staged": {
     "*.{ts,js}": [
