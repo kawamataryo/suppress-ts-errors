@@ -177,6 +177,67 @@ describe("suppressTsErrors", () => {
     },
     {
       text: `
+        import * as React from "react";
+        class Bar extends React.Component<{msg: string}> {
+          render() {
+            return <span>Bar</span>;
+          }
+        }
+        class Baz extends React.Component<{msg: number}> {
+          render() {
+            return <span>Baz</span>;
+          }
+        }
+        const Foo = (props: {bar: React.ReactElement<React.ComponentProps<typeof Bar>>}) => <div>{props.bar}</div>;
+        function tsxFunc() {
+          return (
+            <div>
+              <Foo
+                bar={
+                  <Baz msg="Hello">
+                    World
+                  </Baz>
+                }
+              />
+            </div>
+          );
+        }
+      `,
+      fileName: "target.tsx",
+      commentType: 1,
+      withErrorCode: true,
+      expectedText: `
+        import * as React from "react";
+        class Bar extends React.Component<{msg: string}> {
+          render() {
+            return <span>Bar</span>;
+          }
+        }
+        class Baz extends React.Component<{msg: number}> {
+          render() {
+            return <span>Baz</span>;
+          }
+        }
+        const Foo = (props: {bar: React.ReactElement<React.ComponentProps<typeof Bar>>}) => <div>{props.bar}</div>;
+        function tsxFunc() {
+          return (
+            <div>
+              <Foo
+                bar={
+                  // @ts-expect-error TS2769
+                  <Baz msg="Hello">
+                    World
+                  </Baz>
+                }
+              />
+            </div>
+          );
+        }
+      `,
+      expectedCommentCount: 1,
+    },
+    {
+      text: `
         const a: number = 1;
       `,
       fileName: "target.ts",

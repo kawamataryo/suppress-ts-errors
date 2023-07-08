@@ -22,7 +22,12 @@ function isSomKindOfJsxAtLine(
 
   const isJsxStartOpeningElement =
     targetNode?.getPreviousSibling()?.getKind() ===
-    ts.SyntaxKind.OpenParenToken;
+      ts.SyntaxKind.OpenParenToken ||
+    // This can happen when the error is on the opening JSX tag inside
+    // a JSX expression when a block of JSX is being passed as a prop.
+    targetNode?.getPreviousSibling()?.getKind() ===
+      ts.SyntaxKind.OpenBraceToken;
+
   const isInnerJsxElement =
     targetNode?.getPreviousSibling()?.getKind() ===
     ts.SyntaxKind.JsxOpeningElement;
