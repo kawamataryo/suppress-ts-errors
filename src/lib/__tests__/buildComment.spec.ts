@@ -132,7 +132,8 @@ describe("buildComment", () => {
       `,
       lineNumber: 5,
       expected: "            // @ts-expect-error TS2322",
-    }, {
+    },
+    {
       ...baseParam,
       fileName: "target.tsx",
       source: `
