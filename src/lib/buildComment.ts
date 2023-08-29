@@ -30,7 +30,8 @@ function isSomKindOfJsxAtLine(
 
   const isInnerJsxElement =
     targetNode?.getPreviousSibling()?.getKind() ===
-    ts.SyntaxKind.JsxOpeningElement;
+    ts.SyntaxKind.JsxOpeningElement || targetNode?.getPreviousSibling()?.getKind() ===
+    ts.SyntaxKind.JsxOpeningFragment;
   const isJsxElement = [
     ts.SyntaxKind.JsxText,
     ts.SyntaxKind.JsxTextAllWhiteSpaces,
