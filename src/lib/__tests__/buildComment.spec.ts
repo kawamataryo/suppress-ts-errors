@@ -132,6 +132,23 @@ describe("buildComment", () => {
       `,
       lineNumber: 5,
       expected: "            // @ts-expect-error TS2322",
+    }, {
+      ...baseParam,
+      fileName: "target.tsx",
+      source: `
+function tsxFunc(num: number) {
+  return (
+    <div>
+      {overlap > 0 && (<>
+        <div>foo</div>
+        <div>{num.map(n => n)}</div>
+      </>)}
+    </div>
+  )
+}
+`,
+      lineNumber: 6,
+      expected: "        {/*\n         // @ts-expect-error TS2322 */}",
     },
   ])(
     "build comment",
