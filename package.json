@@ -39,7 +39,7 @@
   "devDependencies": {
     "@commitlint/cli": "17.8.0",
     "@commitlint/config-conventional": "17.8.0",
-    "@types/cli-progress": "3.11.3",
+    "@types/cli-progress": "3.11.4",
     "@types/glob": "8.1.0",
     "@types/node": "18.18.5",
     "@types/react": "18.2.28",
