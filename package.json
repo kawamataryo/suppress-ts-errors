@@ -54,7 +54,7 @@
     "prettier": "3.2.5",
     "semantic-release": "19.0.5",
     "ts-node": "10.9.2",
-    "typescript": "5.3.2",
+    "typescript": "5.4.2",
     "vitest": "0.34.6"
   },
   "lint-staged": {
