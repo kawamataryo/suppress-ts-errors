@@ -52,7 +52,7 @@
     "husky": "8.0.3",
     "lint-staged": "13.2.3",
     "prettier": "3.2.5",
-    "semantic-release": "19.0.5",
+    "semantic-release": "23.0.6",
     "ts-node": "10.9.2",
     "typescript": "5.4.2",
     "vitest": "0.34.6"
