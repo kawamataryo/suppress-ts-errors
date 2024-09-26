@@ -43,7 +43,7 @@
     "@types/glob": "8.1.0",
     "@types/node": "20.11.25",
     "@types/react": "18.2.64",
-    "@types/yargs": "17.0.32",
+    "@types/yargs": "17.0.33",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
     "cz-conventional-changelog": "3.3.0",
