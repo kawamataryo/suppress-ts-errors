@@ -47,6 +47,24 @@ describe("extractScriptFromVue", () => {
         <div class="hello">hello</div>
       </template>
 
+      <script setup lang="ts">
+        import Vue from 'vue'
+
+        const message = 'Hello World!'
+      </script>
+      `,
+      expected: `
+        import Vue from 'vue'
+
+        const message = 'Hello World!'
+      `,
+    },
+    {
+      source: `
+      <template>
+        <div class="hello">hello</div>
+      </template>
+
       <script>
         import Vue from 'vue'
 

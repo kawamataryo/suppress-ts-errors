@@ -1,7 +1,8 @@
-import { parse } from "node-html-parser";
+import { parse } from "@vue/compiler-sfc";
 
 export const extractTypeScriptFromVue = (source: string): string => {
-  const script = parse(source).querySelector('script[lang="ts"]');
+  const { descriptor } = parse(source);
+  const script = descriptor.script || descriptor.scriptSetup;
 
-  return script ? script.rawText : "";
+  return script && script.lang === "ts" ? script.content : "";
 };
