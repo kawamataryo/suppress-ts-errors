@@ -47,3 +47,8 @@ We accept contributions via Pull Requests. See [this guide](https://github.com/k
 ## 📄 License
 
 suppress-ts-errors is available under the MIT License.
+
+
+## ✅ TODO
+
+- [ ] change vue handler to use `@vue/compiler-sfc`

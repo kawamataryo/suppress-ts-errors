@@ -1,10 +1,10 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { extractTypeScriptFromVue } from "../extractTypeScriptFromVue";
 
 describe("extractScriptFromVue", () => {
-  it.each([
-    {
-      source: `
+	it.each([
+		{
+			source: `
       <template>
         <div class="hello">hello</div>
       </template>
@@ -28,7 +28,7 @@ describe("extractScriptFromVue", () => {
         }
       </style>
       `,
-      expected: `
+			expected: `
         import Vue from 'vue'
 
         export Vue.extend({
@@ -40,9 +40,9 @@ describe("extractScriptFromVue", () => {
           }
         })
       `,
-    },
-    {
-      source: `
+		},
+		{
+			source: `
       <template>
         <div class="hello">hello</div>
       </template>
@@ -53,14 +53,14 @@ describe("extractScriptFromVue", () => {
         const message = 'Hello World!'
       </script>
       `,
-      expected: `
+			expected: `
         import Vue from 'vue'
 
         const message = 'Hello World!'
       `,
-    },
-    {
-      source: `
+		},
+		{
+			source: `
       <template>
         <div class="hello">hello</div>
       </template>
@@ -84,11 +84,11 @@ describe("extractScriptFromVue", () => {
         }
       </style>
       `,
-      expected: "",
-    },
-  ])("extractScript", ({ source, expected }) => {
-    const result = extractTypeScriptFromVue(source);
+			expected: "",
+		},
+	])("extractScript", ({ source, expected }) => {
+		const result = extractTypeScriptFromVue(source);
 
-    expect(result).toEqual(expected);
-  });
+		expect(result).toEqual(expected);
+	});
 });

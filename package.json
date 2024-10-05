@@ -13,8 +13,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "lint": "eslint --fix '{src,tests}/**/*.{ts,js}'",
-    "format": "prettier --write '{src,tests}/**/*.{ts,js}'",
+    "lint": "biome check --write ./src",
     "test": "vitest",
     "test:ci": "vitest run",
     "prepare": "husky install"
@@ -37,6 +36,7 @@
     "yargs": "^17.4.1"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.3",
     "@commitlint/cli": "17.8.1",
     "@commitlint/config-conventional": "17.8.1",
     "@types/cli-progress": "3.11.6",
@@ -47,21 +47,15 @@
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "8.57.1",
-    "eslint-config-prettier": "9.1.0",
     "husky": "8.0.3",
     "lint-staged": "13.2.3",
-    "prettier": "3.3.3",
     "semantic-release": "19.0.5",
     "ts-node": "10.9.2",
     "typescript": "5.6.2",
     "vitest": "0.34.6"
   },
   "lint-staged": {
-    "*.{ts,js}": [
-      "eslint --cache --fix",
-      "prettier --write"
-    ]
+    "*.{ts,js}": ["biome check --write"]
   },
   "commitlint": {
     "extends": [
