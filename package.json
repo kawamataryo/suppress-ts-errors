@@ -38,8 +38,8 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.3",
-    "@commitlint/cli": "17.8.1",
-    "@commitlint/config-conventional": "17.8.1",
+    "@commitlint/cli": "19.5.0",
+    "@commitlint/config-conventional": "19.5.0",
     "@types/cli-progress": "3.11.6",
     "@types/glob": "8.1.0",
     "@types/node": "20.16.10",
