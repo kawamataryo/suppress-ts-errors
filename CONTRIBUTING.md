@@ -55,17 +55,17 @@ First, clone the forked repository locally.
 $ git clone git@github.com:foo/suppress-ts-errors.git
 ```
 
-Install dependent modules with [yarn](https://yarnpkg.com/).
-If you do not have yarn, please install it beforehand.
+Install dependent modules with pnpm
+If you do not have pnpm, please install it beforehand.
 
 ```bash
-$ yarn i
+$ pnpm i
 ```
 
 Run unit test with watch mode.
 
 ```bash
-$ yarn test
+$ pnpm test
 ```
 
 That's it. Happy coding 👍

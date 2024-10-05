@@ -7,33 +7,43 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Set node
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
         with:
-          node-version: 16.x
-          cache: yarn
+          version: 9
+          run_install: false
+      - name: Set node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: pnpm
       - name: Install
-        run: yarn install
+        run: pnpm i
       - name: Lint
-        run: yarn run lint
+        run: pnpm run lint
 
   test:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [18.x, 20.x, 22.x]
         os: [ubuntu-latest]
       fail-fast: false
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: 9
+          run_install: false
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           registry-url: https://registry.npmjs.org/
-          cache: yarn
+          cache: pnpm
       - name: Install
-        run: yarn install
+        run: pnpm i
       - name: Unit Test
-        run: yarn run test:ci
+        run: pnpm run test:ci
