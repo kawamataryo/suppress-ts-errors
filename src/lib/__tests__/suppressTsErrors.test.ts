@@ -1,4 +1,4 @@
-import { Project, type ts } from "ts-morph";
+import { Project, ts } from "ts-morph";
 import { beforeAll, describe, expect, it } from "vitest";
 import { suppressTsErrors } from "../suppressTsErrors";
 
@@ -6,7 +6,7 @@ describe("suppressTsErrors", () => {
 	let project: Project;
 	beforeAll(() => {
 		project = new Project({
-			compilerOptions: { strict: true, jsx: "React" as unknown as ts.JsxEmit },
+			compilerOptions: { strict: true, jsx: ts.JsxEmit.React },
 		});
 	});
 
