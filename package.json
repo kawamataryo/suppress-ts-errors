@@ -48,7 +48,7 @@
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
     "cz-conventional-changelog": "3.3.0",
-    "husky": "8.0.3",
+    "husky": "9.1.6",
     "lint-staged": "13.3.0",
     "semantic-release": "19.0.5",
     "ts-node": "10.9.2",
