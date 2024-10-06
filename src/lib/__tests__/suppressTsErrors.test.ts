@@ -126,6 +126,24 @@ describe("suppressTsErrors", () => {
 		{
 			text: `
         function tsxFunc(num: number) {
+          // @ts-expect-error TS2339
+          return <div>{num.map(n => n)}</div>
+        }
+      `,
+			fileName: "target.tsx",
+			commentType: 1,
+			withErrorCode: true,
+			expectedText: `
+        function tsxFunc(num: number) {
+          // @ts-expect-error TS2339
+          return <div>{num.map(n => n)}</div>
+        }
+      `,
+			expectedCommentCount: 0,
+		},
+		{
+			text: `
+        function tsxFunc(num: number) {
           return (
             <div>{num.map(n => n)}</div>
           )
