@@ -1,4 +1,4 @@
-import { Project } from "ts-morph";
+import { Project, type SourceFile } from "ts-morph";
 import { generateProgressBar } from "../lib/progressBar";
 import { suppressTsErrors } from "../lib/suppressTsErrors";
 
@@ -16,7 +16,11 @@ export const tsHandler = ({
   progressBar.start(sourceFiles.length, 0);
 
   // Rewrite source in ts/tsx file with source with comment
-  let insertedCommentCount = 0;
+  const targetFiles: {
+    sourceFile: SourceFile;
+    textWithComment: string;
+    insertedCommentCountPerFile: number;
+  }[] = [];
   for (const sourceFile of sourceFiles) {
     const { text: textWithComment, count: insertedCommentCountPerFile } =
       suppressTsErrors({
@@ -26,13 +30,24 @@ export const tsHandler = ({
       });
 
     if (insertedCommentCountPerFile > 0) {
-      sourceFile.replaceWithText(textWithComment);
-      sourceFile.saveSync();
-      insertedCommentCount += insertedCommentCountPerFile;
+      targetFiles.push({
+        sourceFile,
+        textWithComment,
+        insertedCommentCountPerFile,
+      });
     }
     progressBar.increment();
   }
 
+  for (const targetFile of targetFiles) {
+    targetFile.sourceFile.replaceWithText(targetFile.textWithComment);
+  }
+
+  project.saveSync();
+
   progressBar.stop();
-  return insertedCommentCount;
+  return targetFiles.reduce(
+    (acc, targetFile) => acc + targetFile.insertedCommentCountPerFile,
+    0,
+  );
 };
