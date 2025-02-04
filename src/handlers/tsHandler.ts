@@ -6,10 +6,14 @@ export const tsHandler = ({
   tsconfigPath,
   commentType,
   errorCode,
+  glob,
 }: DefaultOptions): number => {
   // Get all project files
   const project = new Project({ tsConfigFilePath: tsconfigPath });
-  const sourceFiles = project.getSourceFiles();
+  const sourceFiles =
+    glob !== undefined
+      ? project.getSourceFiles(glob)
+      : project.getSourceFiles();
 
   // Initialize progress bar
   const progressBar = generateProgressBar();

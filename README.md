@@ -38,6 +38,7 @@ $ npx suppress-ts-errors vue src/**/*.vue
 | -t, --tsconfig-path | `./tsconfig.json` | Path to tsconfig.json.                                                                                                                                                                                                                                                                                                                |
 | -c, --comment-type  | `1`               | Choice of inserted comment type. <br> `1` is [@ts-expect-error](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-9.html#-ts-expect-error-comments), `2` is [@ts-ignore](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-6.html#suppress-errors-in-ts-files-using--ts-ignore-comments). |
 | -e, --error-code    | `true`            | Add error code to comment. e.g. TS2345.                                                                                                                                                                                                                                                                                               |
+| -g, --glob          | `undefined`       | Add a specific glob for error suppression (prevents script from processing all files and their dependencies)                                                                                                                                                                                                                          |
 
 ## ✨ Contributing
 
