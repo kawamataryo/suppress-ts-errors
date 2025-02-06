@@ -74,9 +74,9 @@ export const buildComment = ({
   );
   sourceFile;
   return isSomKindOfJsxAtLine(sourceFile, lineNumber)
-    ? `${" ".repeat(whiteSpaceCount)}{/*\n${" ".repeat(
-        whiteSpaceCount + 1,
-      )}// ${comment}${withErrorCode ? ` TS${errorCode}` : ""} */}`
+    ? `${" ".repeat(whiteSpaceCount)}{/* ${comment}${
+        withErrorCode ? ` TS${errorCode}` : ""
+      } */}`
     : `${" ".repeat(whiteSpaceCount)}// ${comment}${
         withErrorCode ? ` TS${errorCode}` : ""
       }`;
