@@ -26,4 +26,11 @@ export const DEFAULT_OPTIONS = {
     describe: "Add error code to comment. e.g. TS2345.",
     requiresArg: true,
   },
+  glob: {
+    type: "string",
+    default: undefined,
+    alias: "g",
+    describe: "Add a specific glob for error suppression",
+    requiresArg: true,
+  },
 } as const;

@@ -10,12 +10,13 @@ export const builder = (yargs: Argv<DefaultOptions>): Argv<DefaultOptions> =>
   yargs.options(DEFAULT_OPTIONS).check(tsconfigExists);
 
 export const handler = (argv: Arguments<DefaultOptions>): void => {
-  const { commentType, tsconfigPath, errorCode } = argv;
+  const { commentType, tsconfigPath, errorCode, glob } = argv;
 
   const insertedCommentCount = tsHandler({
     tsconfigPath,
     commentType,
     errorCode,
+    glob,
   });
 
   console.log("\nCompleted 🎉");
