@@ -17,6 +17,7 @@ describe("buildComment", () => {
     commentType: 1,
     errorCode: 2322,
     withErrorCode: true,
+    message: "",
   };
 
   it.each([
@@ -34,6 +35,11 @@ describe("buildComment", () => {
       commentType: 2,
       withErrorCode: false,
       expected: "        // @ts-ignore",
+    },
+    {
+      ...baseParam,
+      message: "custom message",
+      expected: "        // @ts-expect-error TS2322 custom message",
     },
     {
       ...baseParam,
@@ -151,6 +157,23 @@ function tsxFunc(num: number) {
       lineNumber: 6,
       expected: "        {/*\n         // @ts-expect-error TS2322 */}",
     },
+    {
+      ...baseParam,
+      fileName: "target.tsx",
+      message: "custom message",
+      source: `
+      function tsxFunc(num: number) {
+        return (
+          <div>
+            <div>{num.map(n => n)}</div>
+          </div>
+        )
+      }
+      `,
+      lineNumber: 5,
+      expected:
+        "            {/*\n             // @ts-expect-error TS2322 custom message */}",
+    },
   ])(
     "build comment",
     ({
@@ -160,6 +183,7 @@ function tsxFunc(num: number) {
       commentType,
       errorCode,
       withErrorCode,
+      message,
       expected,
     }) => {
       const sourceFile = project.createSourceFile(fileName, source, {
@@ -171,6 +195,7 @@ function tsxFunc(num: number) {
         commentType,
         errorCode,
         withErrorCode,
+        message,
       });
 
       expect(result).toBe(expected);

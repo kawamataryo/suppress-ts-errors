@@ -266,6 +266,48 @@ describe("suppressTsErrors", () => {
       `,
       expectedCommentCount: 0,
     },
+    {
+      text: `
+        const a: string = 1;
+      `,
+      fileName: "target.ts",
+      commentType: 1,
+      withErrorCode: true,
+      message: "custom message",
+      expectedText: `
+        // @ts-expect-error TS2322 custom message
+        const a: string = 1;
+      `,
+      expectedCommentCount: 1,
+    },
+    {
+      text: `
+        function tsxFunc(num: number) {
+          return (
+            <div id={1}>
+              <div>{num.map(n => n)}</div>
+            </div>
+          )
+        }
+      `,
+      fileName: "target.tsx",
+      commentType: 1,
+      withErrorCode: true,
+      message: "custom message",
+      expectedText: `
+        function tsxFunc(num: number) {
+          return (
+            // @ts-expect-error TS2322 custom message
+            <div id={1}>
+              {/*
+               // @ts-expect-error TS2339 custom message */}
+              <div>{num.map(n => n)}</div>
+            </div>
+          )
+        }
+      `,
+      expectedCommentCount: 2,
+    },
   ])(
     "suppress ts error $text",
     ({
@@ -275,6 +317,7 @@ describe("suppressTsErrors", () => {
       withErrorCode,
       expectedText,
       expectedCommentCount,
+      message,
     }) => {
       const sourceFile = project.createSourceFile(fileName, text, {
         overwrite: true,
@@ -284,6 +327,7 @@ describe("suppressTsErrors", () => {
         sourceFile,
         commentType: commentType as CommentType,
         withErrorCode,
+        message,
       });
 
       expect(result.text).toBe(expectedText);
