@@ -5,4 +5,5 @@ type DefaultOptions = {
   commentType: CommentType;
   errorCode: boolean;
   glob?: string;
+  message?: string;
 };

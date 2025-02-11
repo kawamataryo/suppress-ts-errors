@@ -33,4 +33,11 @@ export const DEFAULT_OPTIONS = {
     describe: "Add a specific glob for error suppression",
     requiresArg: true,
   },
+  message: {
+    type: "string",
+    default: undefined,
+    alias: "m",
+    describe: "Add a specific message to the comment",
+    requiresArg: true,
+  },
 } as const;

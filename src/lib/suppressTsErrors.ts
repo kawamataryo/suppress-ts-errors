@@ -5,10 +5,12 @@ export const suppressTsErrors = ({
   sourceFile,
   commentType,
   withErrorCode,
+  message,
 }: {
   sourceFile: SourceFile;
   commentType: CommentType;
   withErrorCode: boolean;
+  message?: string;
 }): {
   text: string;
   count: number;
@@ -38,6 +40,7 @@ export const suppressTsErrors = ({
       commentType: commentType,
       errorCode: d.getCode(),
       withErrorCode: withErrorCode,
+      message,
     });
 
     // Insert comment
