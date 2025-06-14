@@ -49,7 +49,7 @@
     "@typescript-eslint/parser": "8.34.0",
     "cz-conventional-changelog": "3.3.0",
     "husky": "9.1.7",
-    "lint-staged": "16.1.0",
+    "lint-staged": "16.1.1",
     "semantic-release": "24.2.5",
     "ts-node": "10.9.2",
     "typescript": "5.8.3",
