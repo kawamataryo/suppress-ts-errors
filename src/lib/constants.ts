@@ -40,4 +40,13 @@ export const DEFAULT_OPTIONS = {
     describe: "Add a specific message to the comment",
     requiresArg: true,
   },
+  text: {
+    type: "boolean",
+    default: false,
+    alias: undefined,
+    describe:
+      "Append the first line of the TypeScript error message to the comment",
+    // As a boolean flag, `--text` should not require a value.
+    // Providing `--text` alone sets it to true; use `--no-text` to disable.
+  },
 } as const;

@@ -4,6 +4,7 @@ type DefaultOptions = {
   tsconfigPath: string;
   commentType: CommentType;
   errorCode: boolean;
+  text?: boolean;
   glob?: string;
   message?: string;
 };

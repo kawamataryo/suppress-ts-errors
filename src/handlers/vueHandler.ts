@@ -10,6 +10,7 @@ export const vueHandler = async ({
   commentType,
   errorCode,
   message,
+  text,
   targetFilePaths,
 }: DefaultOptions & {
   targetFilePaths: string[];
@@ -54,6 +55,7 @@ export const vueHandler = async ({
       commentType,
       withErrorCode: errorCode,
       message,
+      withErrorText: Boolean(text),
     });
 
     const newText = file.fullText.replace(file.script, scriptWithComment);

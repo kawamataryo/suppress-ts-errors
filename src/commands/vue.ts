@@ -25,8 +25,14 @@ export const builder = (yargs: Argv<Options>): Argv<Options> =>
     .check(isVueFiles);
 
 export const handler = async (argv: Arguments<Options>): Promise<void> => {
-  const { targetFilePaths, tsconfigPath, commentType, errorCode, message } =
-    argv;
+  const {
+    targetFilePaths,
+    tsconfigPath,
+    commentType,
+    errorCode,
+    message,
+    text,
+  } = argv;
 
   const insertedCommentCount = await vueHandler({
     targetFilePaths,
@@ -34,6 +40,7 @@ export const handler = async (argv: Arguments<Options>): Promise<void> => {
     commentType,
     errorCode,
     message,
+    text,
   });
 
   console.log("\nCompleted 🎉");

@@ -8,6 +8,7 @@ export const tsHandler = ({
   errorCode,
   glob,
   message,
+  text,
 }: DefaultOptions): number => {
   // Get all project files
   const project = new Project({ tsConfigFilePath: tsconfigPath });
@@ -33,6 +34,7 @@ export const tsHandler = ({
           commentType,
           withErrorCode: errorCode,
           message,
+          withErrorText: Boolean(text),
         });
 
       if (insertedCommentCountPerFile > 0) {
