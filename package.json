@@ -50,7 +50,7 @@
     "cz-conventional-changelog": "3.3.0",
     "husky": "9.1.7",
     "lint-staged": "16.2.4",
-    "semantic-release": "25.0.0",
+    "semantic-release": "25.0.1",
     "ts-node": "10.9.2",
     "typescript": "5.9.3",
     "vitest": "3.2.4"
