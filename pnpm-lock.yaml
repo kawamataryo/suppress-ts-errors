@@ -43,8 +43,8 @@ importers:
         specifier: 22.19.0
         version: 22.19.0
       '@types/react':
-        specifier: 19.2.2
-        version: 19.2.2
+        specifier: 19.2.3
+        version: 19.2.3
       '@types/yargs':
         specifier: 17.0.34
         version: 17.0.34
@@ -691,8 +691,8 @@ packages:
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
 
-  '@types/react@19.2.2':
-    resolution: {integrity: sha512-6mDvHUFSjyT2B2yeNx2nUgMxh9LtOWvkhIU3uePn2I2oyNymUAX1NIsdgviM4CH+JSrp2D2hsMvJOkxY+0wNRA==}
+  '@types/react@19.2.3':
+    resolution: {integrity: sha512-k5dJVszUiNr1DSe8Cs+knKR6IrqhqdhpUwzqhkS8ecQTSf3THNtbfIp/umqHMpX2bv+9dkx3fwDv/86LcSfvSg==}
 
   '@types/semver@7.5.8':
     resolution: {integrity: sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==}
@@ -3473,7 +3473,7 @@ snapshots:
 
   '@types/normalize-package-data@2.4.4': {}
 
-  '@types/react@19.2.2':
+  '@types/react@19.2.3':
     dependencies:
       csstype: 3.1.3
 
