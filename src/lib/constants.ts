@@ -27,7 +27,7 @@ export const DEFAULT_OPTIONS = {
     requiresArg: true,
   },
   glob: {
-    type: "string",
+    type: "array",
     default: undefined,
     alias: "g",
     describe: "Add a specific glob for error suppression",
